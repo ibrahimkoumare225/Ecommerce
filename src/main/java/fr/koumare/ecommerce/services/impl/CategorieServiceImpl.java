@@ -7,6 +7,8 @@ import fr.koumare.ecommerce.services.CategorieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CategorieServiceImpl implements CategorieService {
@@ -19,7 +21,7 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public Iterable<Categorie> getAllCategories() {
+    public List<Categorie> getAllCategories() {
         return categorieRepository.findAll();
     }
 
@@ -31,6 +33,16 @@ public class CategorieServiceImpl implements CategorieService {
     @Override
     public void  deleteCategorie(Long id) {
         categorieRepository.deleteById(id);
+    }
+
+    @Override
+    public Categorie updateCategorie(Categorie categorie) {
+        Categorie existingcategorie = categorieRepository.findById(categorie.getId()).orElseThrow(()-> new IllegalArgumentException("Categorie not found"));
+
+        if(categorie.getDescription()!=null){
+            existingcategorie.setId(categorie.getId());
+        }
+        return categorieRepository.save(categorie);
     }
 }
 

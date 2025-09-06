@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Categorie</title>
+
+    <!-- Bootstrap CSS depuis WebJars -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+
+</head>
+<body>
+<!-- Navbar importée via Thymeleaf -->
+<div th:replace="static/navbar :: navbar"></div>
+
+<div class="container mt-5">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6" th:text="${categorie.id == null}?'Ajouter une categorie':'Modifier une categorie'"></h1>
+    <form method="post" th:object="${categorie}" th:action="@{/homeCategorie}">
+        <input th:field="*{id}" hidden type="text">
+        <!-- Nom -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Nom</label>
+            <input th:field="*{description}" type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <!-- Bouton -->
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+</div>
+
+
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

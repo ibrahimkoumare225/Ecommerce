@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:class="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta charset="UTF-8">
+            <title>Title</title>
+            <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+
+        </head>
+        <body>
+            <div th:replace="~{static/navbar::navbar}"></div>
+            <div class="container mt-5 align-content-lg-center">
+                <h1>Bienvenue sur le site de l'ecommerce.</h1>
+
+                <a th:href="@{/homeProduct}" class="btn btn-sm btn-outline-primary ">Cliquez-ici</a>pour plus d'information.
+
+            </div>
+            </div>
+        </body>
+    </html>

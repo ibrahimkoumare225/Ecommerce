@@ -13,8 +13,8 @@
 <div th:replace="static/navbar :: navbar"></div>
 
 <div class="container mt-5">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6" th:text="${product.product_id == null}?'Ajouter élève':'Modifier élève'"></h1>
-    <form method="post" th:object="${product}" th:action="@{/home}">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6" th:text="${product.product_id == null}?'Ajouter un produit':'Modifier un produit'"></h1>
+    <form method="post" th:object="${product}" th:action="@{/homeProduct}">
         <input th:field="*{product_id}" hidden type="text">
         <!-- Nom -->
         <div class="mb-3">

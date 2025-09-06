@@ -17,27 +17,27 @@ public class ProductController {
 
     private final ProductServiceImpl productService;
 
-    @GetMapping("/home")
+    @GetMapping("/homeProduct")
     public String homePage(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("listProduct",products);
-        return "dynamic/home";
+        return "dynamic/product/home";
     }
     @GetMapping("/products/delete/{id}")
     public  String deleteProduct(@PathVariable Long id) {
          productService.deleteProduct(id);
-         return "redirect:/home";
+         return "redirect:/homeProduct";
     }
     @GetMapping("/addProduct")
     public String addProduct(Model model) {
         model.addAttribute("product", new Product());
-        return "dynamic/forms";
+        return "dynamic/product/forms";
     }
 
-    @PostMapping("/home")
+    @PostMapping("/homeProduct")
     public String saveProduct(Product product) {
         productService.addProduct(product);
-        return "redirect:/home";
+        return "redirect:/homeProduct";
     }
 
     @GetMapping("products/{id}")
@@ -45,10 +45,10 @@ public class ProductController {
         Product existProd = productService.getProductById(id);
         if(existProd!=null) {
             model.addAttribute("product", existProd);
-            return "dynamic/forms";
+            return "dynamic/product/forms";
         }
         else{
-            return "redirect:/home";
+            return "redirect:/homeProduct";
         }
 
     }
